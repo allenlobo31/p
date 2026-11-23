@@ -33,8 +33,10 @@ int main(int argc, char **argv) {
         printf("Process 1 received data from Process 0\n");
     }
 
-mpicc -g -o sendrcv_two_way sendrcv_two_way.c
-mpirun -np 2 ./sendrcv_two_way
     MPI_Finalize();
     return 0;
 }
+
+
+mpicc -g -o sendrcv_two_way sendrcv_two_way.c
+mpirun -np 2 ./sendrcv_two_way
