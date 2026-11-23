@@ -11,6 +11,8 @@ int main(int argc, char **argv) {
     int world_size;
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
+    int number = -1;
+
     if (world_size < 2) {
         fprintf(stderr, "World size must be greater than 1 for %s\n", argv[0]);
         MPI_Abort(MPI_COMM_WORLD, 1);
@@ -18,7 +20,6 @@ int main(int argc, char **argv) {
 
     int number;
     if (world_rank == 0) {
-        number = -1;
         MPI_Send(&number, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
     } else if (world_rank == 1) {
         MPI_Recv(&number, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
