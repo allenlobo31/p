@@ -20,14 +20,12 @@ int main(int argc, char **argv) {
     }
 
     if (rank == 0) {
-        // Rank 0 sends first, then receives
         MPI_Send(&data, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
         printf("Process 0 sent data to Process 1\n");
 
         MPI_Recv(&data, 1, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Process 0 received data from Process 1\n");
     } else if (rank == 1) {
-        // Rank 1 sends first, then receives
         MPI_Send(&data, 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
         printf("Process 1 sent data to Process 0\n");
 
