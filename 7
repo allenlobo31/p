@@ -25,3 +25,6 @@ int main(int argc, char **argv) {
     MPI_Finalize(); 
     return 0;
 }
+
+mpicc -g -o broadcast broadcast.c
+mpirun -np 4 ./broadcast
